@@ -1,0 +1,89 @@
+<div class="card card-style">
+    <div class="row row-cols-md-5">
+        <div *ngFor="let meter of meterAllData ; let i = index"  class="col mb-4 text-center">
+            <button class="card-room" (click)="getMeterById(meter.meterId)" data-toggle="modal" data-target="#modalMeter">
+                <h1 class="card-header text-center card-header-style " style="padding-top: 3px;">
+                   
+                </h1>
+                <div class="card-body">
+                    <img *ngIf="meter.meterStatus == recorded" class="material-icons icon-in-room" src="https://img.icons8.com/external-icongeek26-linear-colour-icongeek26/64/000000/external-meters-oil-industry-icongeek26-linear-colour-icongeek26.png"/>
+                    <img *ngIf="meter.meterStatus == unrecorded" class="material-icons icon-in-room" src="https://img.icons8.com/external-icongeek26-outline-gradient-icongeek26/64/000000/external-meters-oil-industry-icongeek26-outline-gradient-icongeek26.png"/>
+
+                </div>
+                <div class="card-footer pl-1 pr-1">
+                </div>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Meter -->
+
+<div [formGroup]="formMeter" class="modal fade" id="modalMeter" aria-hidden="true" data-backdrop="true">
+    <div class="modal-dialog modal-dialog-full-width">
+        <div class="modal-content modal-content-full-width">
+            <div class="modal-header modal-header-bg">{{showRoomNumber}}</div>
+            <div class="modal-body pb-5">
+                <div class="row row-cols-md-2">
+                    <div class="col-sm-3 " style="height: 17rem;">
+                        <div class="form-group col " style="text-align: center;">
+                            <span class="material-icons"
+                                style="font-size: 5rem; color: rgb(71, 187, 255); ">opacity</span>
+                        </div>
+                        <div class="form-group col ">
+                            <label for="meterPreviousWater">เลขก่อนหน้า</label>
+                            <input formControlName="meterPreviousWater" class="form-control" type="number" readonly
+                                [ngModel]="formMeter.meterPreviousWater">
+                        </div>
+                        <div class="form-group col ">
+                            <label for="meterWater">เลขปัจจุบัน</label>
+                            <input formControlName="meterWater" class="form-control" type="number"
+                                [ngModel]="formMeter.meterWater">
+                        </div>
+                        <!-- <div class="form-group col">
+                            <label for="meterUnitWater">จำนวนที่ใช้</label>
+                            <input formControlName="meterUnitWater" class="form-control" type="number"
+                                [(ngModel)]="formMeter.meterUnitWater" readonly>
+                        </div>
+                        <div class="form-group col">
+                            <div class="row">
+                                <div class="col">20.-/หน่วย</div>
+                                <div class="col " style="text-align: right;">{{this.totalWaterPrice}} บาท</div>
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="col-sm-3" style="height: 17rem;">
+                        <div class="form-group col " style="text-align: center;">
+                            <span class="material-icons" style="font-size: 5rem; color: rgb(202, 62, 62); ">bolt</span>
+                        </div>
+                        <div class="form-group col ">
+                            <label for="meterPreviousPower">เลขก่อนหน้า</label>
+                            <input formControlName="meterPreviousPower" class="form-control" type="number" readonly>
+                        </div>
+                        <div class="form-group col ">
+                            <label for="meterPower">เลขปัจจุบัน</label>
+                            <input formControlName="meterPower" class="form-control" type="number">
+                        </div>
+                        <!-- <div class="form-group col">
+                            <label for="meterUnitPower">จำนวนที่ใช้</label>
+                            <input formControlName="meterUnitPower" class="form-control" type="number"
+                                [(ngModel)]="formMeter.meterUnitPower" readonly>
+                        </div> -->
+                        <!-- <div class="form-group col">
+                            <div class="row">
+                                <div class="col">5.-/หน่วย</div>
+                                <div class="col " style="text-align: right;">{{this.totalPowerPrice}} บาท</div>
+                            </div>
+                        </div> -->
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <!-- <button class="btn btn-warning" (click)="calculateMeter()">apply</button> -->
+                <button class="btn btn-success" (click)="onEditMeter()" data-dismiss="modal">ยืนยัน</button>
+                <button class="btn btn-danger" data-target="close" data-dismiss="modal">ยกเลิก</button>
+            </div>
+        </div>
+    </div>
+</div>

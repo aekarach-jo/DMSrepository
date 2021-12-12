@@ -1,0 +1,154 @@
+<div class="card card-style ">
+        <h1 class="mt-5 m-3 table-header-style">รายชื่อผู้เช่าทั้งหมด</h1>
+        <input type="text" [(ngModel)]="searchFilter" >
+    <div class="card-body table-responsive table-style">
+        <table class="table table-bordered">
+            <thead class="">
+                <tr class="tr-header">
+                    <th scope="col">ห้องที่</th>
+                    <th scope="col">ชื่อ-นามสกุล</th>
+                    <th scope="col">อายุ</th>
+                    <th scope="col">เบอร์โทรศัพท์</th>
+                    <th scope="col">หมายเหตุ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of userAllData" class="tr-header">
+                    <td>{{user.userRoomNumber}}</td>
+                    <td>{{user.userName}}</td>
+                    <td>{{user.userAge}}</td>
+                    <td>{{user.userTel}}</td>
+                    <td>
+                        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" (click)="getUserById(user.userId)">
+                            <mat-icon>more_vert</mat-icon>
+                        </button>
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item (click)="getUserById(user.userId)" data-toggle="modal" data-target="#modalUserData">
+                                <mat-icon style="color: rgb(110, 201, 110);">drag_indicator</mat-icon>
+                                <span>รายละเอียดทั้งหมด</span>
+                            </button>
+                            <button mat-menu-item (click)="getUserById(user.userId)" data-toggle="modal" data-target="#modalEditUser">
+                                <mat-icon style="color: orange;"> border_color</mat-icon>
+                                <span>แก้ไข</span>
+                            </button>
+                            <button mat-menu-item (click)="onDeleteUser(user.userId)">
+                                <mat-icon style="color: red;">backspace</mat-icon>
+                                <span>ลบ</span>
+                            </button>
+                        </mat-menu>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+<!-- -------------------------------Modal Editu User  ......................-->
+
+
+<!-- Modal User Edit -->
+<div class="modal fade" id="modalEditUser" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-full-width">
+        <div [formGroup]="formUser" class="modal-content modal-content-full-width">
+            <div class="modal-header modal-header-bg ">
+                <p>แก้ไขข้อมูลผู้เช่า</p>
+            </div>
+            <div class="modal-body">
+                <div class="row row-cols-md-2">
+  
+                    <div class="form-group col-sm-2">
+                        <label for="userName">ชื่อ-นามสกุล</label>
+                        <input formControlName="userName" class="form-control" type="text" >
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <label for="userTel">เบอร์โทรศัพท์</label>
+                        <input formControlName="userTel" class="form-control" type="text">
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <label for="userAge">อายุ</label>
+                        <input formControlName="userAge" class="form-control" type="number">
+                    </div>
+                    <div class="form-group col">
+                        <label for="userIdCard">เลขบัตรประชาชน</label>
+                        <input formControlName="userIdCard" class="form-control" type="number">
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <label for="userRoomNumber">เช่าห้องที่</label>
+                        <input formControlName="userRoomNumber" class="form-control" type="text">
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <label for="userFloorNumber">ชั้นที่</label>
+                        <input formControlName="userFloorNumber" class="form-control" type="number">
+                    </div>    
+                    <div class="form-group col-sm-2">
+                        <label for="userAddress">ที่อยู่</label>
+                        <textarea  formControlName="userAddress" class="form-control" type="text"></textarea>
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <label for="userEmail">อีเมลล์</label>
+                        <textarea  formControlName="userEmail" class="form-control" type="text"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" type="submit" (click)="onEditUser(formUser.value.userId)" data-dismiss="modal">ยืนยัน</button>
+                <button class="btn btn-success" data-dismiss="modal">ยกเลิก</button>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <!-- Modal show user data -->
+
+  <div class="modal fade" id="modalUserData" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-full-width">
+        <div [formGroup]="formUser" class="modal-content modal-content-full-width">
+            <div class="modal-header modal-header-bg ">
+                <p>แก้ไขข้อมูลผู้เช่า</p>
+            </div>
+            <div class="modal-body">
+                <div class="row row-cols-md-2">
+  
+                    <div class="form-group col-sm-2">
+                        <label for="userName">ชื่อ-นามสกุล</label>
+                        <input formControlName="userName" class="form-control" type="text" readonly>
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <label for="userTel">เบอร์โทรศัพท์</label>
+                        <input formControlName="userTel" class="form-control" type="text"readonly>
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <label for="userAge">อายุ</label>
+                        <input formControlName="userAge" class="form-control" type="number"readonly>
+                    </div>
+                    <div class="form-group col">
+                        <label for="userIdCard">เลขบัตรประชาชน</label>
+                        <input formControlName="userIdCard" class="form-control" type="number"readonly>
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <label for="userRoomNumber">เช่าห้องที่</label>
+                        <input formControlName="userRoomNumber" class="form-control" type="text"readonly>
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <label for="userFloorNumber">ชั้นที่</label>
+                        <input formControlName="userFloorNumber" class="form-control" type="number"readonly>
+                    </div>    
+                    <div class="form-group col-sm-2">
+                        <label for="userAddress">ที่อยู่</label>
+                        <textarea  formControlName="userAddress" class="form-control" type="text"readonly></textarea>
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <label for="userEmail">อีเมลล์</label>
+                        <textarea  formControlName="userEmail" class="form-control" type="text"readonly></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" data-dismiss="modal">ตกลง</button>
+            </div>
+        </div>
+    </div>
+  </div>
