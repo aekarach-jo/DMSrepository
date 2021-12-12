@@ -1,0 +1,70 @@
+.card-style{
+    background: #F5F5F5;;
+    margin: 0rem;
+    padding: 2rem;
+    /* background: rgb(204, 207, 209); */
+    min-height: 100vh;
+    
+
+}
+.card-header-style{
+    height: 20px; vertical-align: top;
+    text-align: center;
+    font-weight: 700;
+    padding-top: 0px;
+    box-shadow: 0 0 0.5em 0.5px #4ff064;
+}
+
+.shadow-red{
+    box-shadow: 0 0 0.5em 0.5px #f04f5c;
+}
+.card-room{
+    
+    width: 8.5rem;
+    height: 13rem;
+    background: rgb(255, 255, 255);
+    border-radius: 15px;
+    box-shadow: 0 0 0.6em 1px #b8b0b0;
+}
+
+.icon-add-room{
+    width: 4rem;
+    height: 4rem;
+    padding-top: 0rem; font-size: 4rem;
+}
+
+.icon-in-room{
+    font-size: 6rem;
+}
+.font-in-card{
+    font-size: 14px;
+    border-radius: 15px;
+}
+
+
+.modal-dialog-full-width {
+
+    min-height: 5%;
+    min-width: 5%;
+    position: relative;
+}
+
+.modal-content-full-width {
+    /* min-height: 100%; */
+    /* background-color: #e7e7e7 */
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.1);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    /* border-bottom: 1px solid rgba(255, 255, 255, 0.25); */
+    overflow: hidden;
+    backdrop-filter: blur(7px);
+
+}
+.modal-header-bg {
+    background-color: #313131;
+    color: antiquewhite;
+}
+

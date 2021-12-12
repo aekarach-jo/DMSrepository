@@ -1,0 +1,199 @@
+<div class="card card-style">
+    <!-- <h3>ตัวกรอง</h3>
+    <div class="row row-cols-sm-4 mb-5">
+        <div class="col">
+            <div class="btn-group">
+                <button class="btn btn-info btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                  ชั้นที่
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">1</a>
+                    <a class="dropdown-item" href="#">2</a>
+                    <a class="dropdown-item" href="#">3</a>
+                </div>
+              </div>
+        </div>
+        <div class="col">2</div>
+        <div class="col">3</div>
+        <div class="col">4</div>
+    </div> -->
+    <div class="row row-cols-md-5" *ngIf="roomAllData != null">
+        <div *ngFor="let item of roomAllData" class="col mb-4">
+            <div class="card-room">
+                <div *ngIf="item.roomStatus == busyRoom" class="card-header card-header-style bg-danger shadow-red">{{item.roomNumber}}</div>
+                <div *ngIf="item.roomStatus == emptyRoom" class="card-header card-header-style bg-success ">{{item.roomNumber}}
+                </div>
+                <div class="card-body">
+                    <img  class="material-icons icon-in-room" src="https://img.icons8.com/stickers/100/000000/door-opened.png"/>
+               </div>
+                <!-- <a *ngIf="item.roomStatus == emptyRoom" type="text" class="text-center " style="margin-left: 3.5rem; font-weight: 900;">ว่าง</a>
+                <a *ngIf="item.roomStatus == busyRoom" type="text" class="text-center " style="margin-left: 3.5rem; font-weight: 900;">ไม่ว่าง</a> -->
+                <div class="card-footer pl-1 pr-1 ">
+                    <button class=" btn-warning float-left font-in-card" data-toggle="modal"
+                        data-target="#modalEditRoom" (click)="getRoomById(item.roomId)">แก้ไข</button>
+                    <button class=" btn-success float-right font-in-card" data-toggle="modal"
+                    data-target="#modalRegisterUser" (click)="getRoomById(item.roomId)">เพิ่ม</button>
+                </div>
+
+            </div>
+        </div>
+        <!-- เพิ่มห้อง -->
+        <div class="col mt-5 ml-4">
+            <button class="btn btn-success rounded-pill" data-toggle="modal" data-target="#modalAddRoom"><span
+                    class="material-icons icon-add-room">
+                    add
+                </span>
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<!-- modal add room -->
+<div class="modal fade" id="modalAddRoom" data-backdrop="true">
+    <div class="modal-dialog modal-dialog-full-width">
+        <div class="modal-content modal-content-full-width">
+            <div class="modal-header modal-header-bg">
+                <p>เพิ่มห้อง</p>
+            </div>
+            <div class="modal-body" [formGroup]="formRoom" >
+                <div  class="row row-cols-md-1">
+                    <div class="form-group col-sm-2">
+                        <label for="roomNumber">ห้องที่</label>
+                        <input formControlName="roomNumber" class="form-control" type="text">
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <label for="roomFloorNumber">ชั้นที่</label>
+                        <input formControlName="roomFloorNumber" class="form-control" type="text">
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <label for="roomStatus">สถานะห้อง</label>
+                        <select formControlName="roomStatus" class="form-control" type="text" id="exampleFormControlSelect1">
+                            <option >ว่าง</option>
+                            <option>ไม่ว่าง</option>
+                        </select>
+                    </div>
+                </div>
+                <div [formGroup]="formMeter" class="row row-cols-md-3">
+                    <div class="form-group col">
+                        <div class="form-group col">
+                            <label for="meterPreviousWater">เลขมิเตอร์น้ำ</label>
+                            <input formControlName="meterPreviousWater" class="form-control" type="number">
+                        </div>
+                    </div>
+                    <div class="form-group col">
+                        <div class="form-group col">
+                            <label for="meterPreviousPower">เลขมิเตอร์ไฟ</label>
+                            <input formControlName="meterPreviousPower" class="form-control" type="number"  >
+                        </div>
+                    </div>
+                    <div class="row row-cols-md-2 mt-4">
+                        <div class="col">
+                            <button class="btn btn-warning" (click)="changeTrueFalse()" type="submit">Apply</button>
+                        </div>
+                        <div class="col">
+                            <span class="material-icons" style="color: lawngreen;" *ngIf="apply == true">
+                                done
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success"  type="submit" (click)="onCreateRoom()" data-dismiss="modal">ยืนยัน</button>
+                    <button class="btn btn-success" data-dismiss="modal">ยกเลิก</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Edit Room-->
+<div class="modal fade" id="modalEditRoom" aria-hidden="true" data-backdrop="true">
+    <div class="modal-dialog modal-dialog-full-width">
+        <div class="modal-content modal-content-full-width">
+            <div class="modal-header modal-header-bg">
+                <p>แก้ไขข้อมูล</p>
+            </div>
+            <div [formGroup]="formRoom" class="modal-body">
+                <div class="row row-cols-md-1">
+                    <div class="form-group col-sm-2">
+                        <label for="roomNumber">ห้องที่</label>
+                        <input formControlName="roomNumber" class="form-control" type="text"  >
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <label for="roomFloorNumber">ชั้นที่</label>
+                        <input formControlName="roomFloorNumber" class="form-control" type="text" >
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <label for="userId" >ผู้เช่า</label>
+                        <input formControlName="userId" class="form-control" id="userId" readonly hidden>
+                        <input  class="form-control" placeholder="{{this.roomUserName}}" readonly>
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <label for="roomStatus">สถานะห้อง</label>
+                        <select formControlName="roomStatus" class="form-control" type="text"  >
+                            <option value="ว่าง">ว่าง</option>
+                            <option value="ไม่ว่าง">ไม่ว่าง</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success" type="submit" (click)="onEditRoom(formRoom.value.roomId)" data-dismiss="modal" >ยืนยัน</button>
+                    <button class="btn btn-success" data-dismiss="modal">ยกเลิก</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal User Register -->
+<div [formGroup]="formUser" class="modal fade" id="modalRegisterUser" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-full-width">
+        <div class="modal-content modal-content-full-width">
+            <div class="modal-header modal-header-bg ">
+                <p>ลงทะเบียนผู้เช่า ห้อง {{roomNumber}}</p>
+            </div>
+            <div class="modal-body">
+                <div class="row row-cols-md-2">
+  
+                    <div class="form-group col-sm-2">
+                        <label for="userName">ชื่อ-นามสกุล</label>
+                        <input formControlName="userName" class="form-control" type="text">
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <label for="userAge">อายุ</label>
+                        <input formControlName="userAge" class="form-control" type="number">
+                    </div>
+                    <div class="form-group col">
+                        <label for="userIdCard">เลขบัตรประชาชน</label>
+                        <input formControlName="userIdCard" class="form-control" type="number">
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <label for="userRoomNumber">เช่าห้องที่</label>
+                        <input formControlName="userRoomNumber" class="form-control" type="text" placeholder="{{roomNumber}}" readonly>
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <label for="userTel">เบอร์โทรศัพท์</label>
+                        <input formControlName="userTel" class="form-control" type="text">
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <label for="userAddress">ที่อยู่</label>
+                        <input formControlName="userAddress" class="form-control" type="text">
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <label for="userEmail">อีเมลล์</label>
+                        <input formControlName="userEmail" class="form-control" type="text">
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <label for="userFloorNumber">ชั้นที่</label>
+                        <input formControlName="userFloorNumber" class="form-control" type="number">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" type="submit" (click)="onCreateUser()" data-dismiss="modal">ยืนยัน</button>
+                <button class="btn btn-success" data-dismiss="modal">ยกเลิก</button>
+            </div>
+        </div>
+    </div>
+  </div>

@@ -1,0 +1,136 @@
+.navStyle {
+    padding: 5px;
+    border-bottom: 1px solid #ffffff;
+    box-shadow: 0 1 #ffffff;
+    box-shadow: 0 0 0.6em 1px #acabab;
+    background-color: #d3d3d3;
+}
+.navbar-collapse-style {
+  background-color: #828282;
+}
+.brandStyle{
+ font-size: 20px;
+ color: aliceblue;
+ font-weight: 700;
+ background: #828282;
+ box-shadow: 0 0 0.5em 1px #646464;
+}
+
+.img-style{
+  padding-bottom: 0.5rem;
+}
+.login-style{
+  background: #548B54;
+}
+.navOption{
+  font-size: 12px;
+  color: aliceblue;
+  margin-right: 1rem;
+}
+.btn-position{
+  margin-left: 2rem;
+  margin-top: 3rem;
+}
+.menu-style{
+  background: #313131;
+}
+.icon-menu{
+  height: 6rem; 
+  width: 6rem;
+  border-color: aliceblue;
+  background-clip: border-box;
+  background-color: rgb(223, 227, 247);
+  border-radius: 15px;
+  box-shadow: 0 0 0.9em 1px #ffffff;
+}
+
+
+
+.menu{
+  box-sizing: border-box;
+  padding-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  background: #F5F5F5;;
+}
+
+.navigation{
+  width: 300px;
+  height: 70px;
+  /* background: rgb(230, 221, 221); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.navigation ul{
+  display: flex;
+  width: 350px;
+}
+.navigation ul li{
+  position: relative;
+  list-style: none;
+  width: 70px;
+  height: 70px;
+}
+.navigation ul li a{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+
+}
+
+.navigation ul li a .icon{
+  position: relative;
+  display: block;
+  line-height: 75px;
+  font-size: 1.5em;
+  text-align: center;
+  transition: 0.5s;
+  color: #222327;
+}
+
+.navigation ul li:hover a .icon{
+  transform: translateY(-20px);
+}
+
+/* .empty{
+  margin-left: 9rem;
+} */
+
+.navigation ul li a .text{
+  position: absolute;
+  color: #222327;
+  font-weight: 700;
+  font-size: 0.75em;
+  letter-spacing: 0.05em;
+  transition: 0.5s;
+  opacity: 0;
+  transform: translateY(5px);
+}
+
+.navigation ul li:hover a .text{
+  opacity: 1;
+  transform: translateY(20px);
+}
+
+.indicator{
+  position: absolute;
+  top: -50%;
+  width: 70px;
+  height: 70px;
+  background: #24d848;
+  border-radius: 50%;
+  border: 6px solid #222327;
+  transition: 0.5s;
+  padding-right: 3rem;
+
+
+}
