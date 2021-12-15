@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { RoomPlanComponent } from './components/room-plan/room-plan.component';
 import { MeterComponent } from './components/meter/meter.component';
 import { UserComponent } from './components/user/user.component';
+import { BillComponent } from './components/bill/bill.component';
 
 
 
@@ -19,7 +20,8 @@ import { UserComponent } from './components/user/user.component';
     AppComponent,
     RoomPlanComponent,
     MeterComponent,
-    UserComponent
+    UserComponent,
+    BillComponent
   ],
   imports: [
     BrowserModule,

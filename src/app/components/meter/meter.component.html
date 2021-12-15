@@ -1,16 +1,20 @@
 <div class="card card-style">
     <div class="row row-cols-md-5">
-        <div *ngFor="let meter of meterAllData ; let i = index"  class="col mb-4 text-center">
-            <button class="card-room" (click)="getMeterById(meter.meterId)" data-toggle="modal" data-target="#modalMeter">
-                <h1 class="card-header text-center card-header-style " style="padding-top: 3px;">
-                   
-                </h1>
+        <div *ngFor="let meter of meterAllData ; let i = index" class="col mb-4 text-center">
+            <button class="card-room" (click)="getMeterById(meter.meterId)" data-toggle="modal"
+                data-target="#modalMeter">
                 <div class="card-body">
-                    <img *ngIf="meter.meterStatus == recorded" class="material-icons icon-in-room" src="https://img.icons8.com/external-icongeek26-linear-colour-icongeek26/64/000000/external-meters-oil-industry-icongeek26-linear-colour-icongeek26.png"/>
-                    <img *ngIf="meter.meterStatus == unrecorded" class="material-icons icon-in-room" src="https://img.icons8.com/external-icongeek26-outline-gradient-icongeek26/64/000000/external-meters-oil-industry-icongeek26-outline-gradient-icongeek26.png"/>
-
+                    <img *ngIf="meter.meterStatus == recorded" class="material-icons icon-in-room"
+                        src="https://img.icons8.com/external-icongeek26-linear-colour-icongeek26/64/000000/external-meters-oil-industry-icongeek26-linear-colour-icongeek26.png" />
+                    <img *ngIf="meter.meterStatus == unrecorded" class="material-icons icon-in-room"
+                        src="https://img.icons8.com/external-icongeek26-outline-gradient-icongeek26/64/000000/external-meters-oil-industry-icongeek26-outline-gradient-icongeek26.png" />
                 </div>
-                <div class="card-footer pl-1 pr-1">
+                <div class="card card-footer-style  pl-1 pr-1">
+                    <div *ngFor="let room of roomAllData">
+                        <div *ngIf="meter.roomId == room.roomId">
+                            {{room.roomNumber}}
+                        </div>
+                    </div>
                 </div>
             </button>
         </div>

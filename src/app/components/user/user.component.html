@@ -1,6 +1,10 @@
 <div class="card card-style ">
-        <h1 class="mt-5 m-3 table-header-style">รายชื่อผู้เช่าทั้งหมด</h1>
-        <input type="text" [(ngModel)]="searchFilter" >
+    <div class="row row-cols-md-2">
+        <div class="col-8"><h1 class="mt-5 m-3 table-header-style">รายชื่อผู้เช่าทั้งหมด</h1></div>
+        <div class="col-4"><button class="btn btn-success float-right export-excel rounded-pill" (click)="getAllUserToExport()">Export Excel</button></div>
+    </div>
+        
+        
     <div class="card-body table-responsive table-style">
         <table class="table table-bordered">
             <thead class="">
@@ -42,6 +46,33 @@
         </table>
     </div>
 </div>
+
+<table class="table table-bordered" id="export-data-to-excel" hidden>
+    <thead class="">
+        <tr class="tr-header">
+            <th scope="col">ชื่อ-นามสกุล</th>
+            <th scope="col">เบอร์โทรศัพท์</th>
+            <th scope="col">อีเมลล์</th>
+            <th scope="col">อายุ</th>
+            <th scope="col">เลขบัตรประชาชน</th>
+            <th scope="col">ห้องที่</th>
+            <th scope="col">ชั้นที่</th>
+            <th scope="col">ที่อยู่</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of userAllData" class="tr-header">
+            <td>{{user.userName}}</td>
+            <td>{{user.userTel}}</td>
+            <td>{{user.userEmail}}</td>
+            <td>{{user.userAge}}</td>
+            <td>{{user.userIdCard}}</td>
+            <td>{{user.userRoomNumber}}</td>
+            <td>{{user.userFloorNumber}}</td>
+            <td>{{user.userAddress}}</td>
+        </tr>
+    </tbody>
+</table>
 
 
 
