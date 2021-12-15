@@ -1,57 +1,66 @@
-
-    <nav class="navbar navbar-expand-lg navStyle border-bottom">
-      <button class="btn brandStyle rounded-pill " id="menu-toggle"> 
-        <img class="img-style" src="https://img.icons8.com/fluency/24/000000/hostel.png"/>
-        Dormitory</button>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <img src="https://img.icons8.com/plumpy/48/000000/menu-squared-2.png"/>
-      </button>
-      <div class="collapse navbar-collapse   " id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-          <li class="nav-item">
-            <a class="nav-link navOption btn login-style">เข้าสู่ระบบ</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link navOption btn btn-secondary" href="#">ออกจากระบบ</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
+<nav class="navbar navbar-expand-lg navStyle border-bottom">
+  <button class="btn brandStyle rounded-pill " id="menu-toggle">
+    <img class="img-style" src="https://img.icons8.com/fluency/24/000000/hostel.png" />
+    Dormitory</button>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <img src="https://img.icons8.com/plumpy/48/000000/menu-squared-2.png" />
+  </button>
+  <div class="collapse navbar-collapse   " id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link navOption btn login-style">เข้าสู่ระบบ</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link navOption btn btn-secondary" href="#">ออกจากระบบ</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
 
-    <div class="menu">
-      <div class="navigation ">
-        <ul>
-          <li class="list">
-            <a routerLink="room-plan">
-              <span class="icon">
-                <img src="https://img.icons8.com/fluency/48/000000/room.png"/>
-              </span>
-              <span class="text">ROOM</span>
-            </a>
-          </li>
-          <li class="list">
-            <a routerLink="meter">
-              <span class="icon">
-                <img src="https://img.icons8.com/external-icongeek26-flat-icongeek26/64/000000/external-meters-oil-industry-icongeek26-flat-icongeek26.png"/>
-              </span>
-              <span class="text">METER</span>
-            </a>
-          </li>
-          <li class="list">
-            <a routerLink="user">
-              <span class="icon empty">
-                <img src="https://img.icons8.com/color/64/000000/user.png"/>
-              </span> <span class="text empty">CUSTOMER</span>
-            </a>
-            <!-- <div class="indicator"></div> -->
-          </li>
-        </ul>
-      </div>
-    </div>
-    <router-outlet></router-outlet> 
+
+<div class="menu">
+  <div class="navigation ">
+    <ul>
+      <li class="list">
+        <a routerLink="room-plan">
+          <span class="icon">
+            <img src="https://img.icons8.com/fluency/48/000000/room.png" />
+          </span>
+          <span class="text">ROOM</span>
+        </a>
+      </li>
+      <li class="list">
+        <a routerLink="meter">
+          <span class="icon">
+            <img
+              src="https://img.icons8.com/external-icongeek26-flat-icongeek26/64/000000/external-meters-oil-industry-icongeek26-flat-icongeek26.png" />
+          </span>
+          <span class="text">METER</span>
+        </a>
+      </li>
+      <li class="list">
+        <a routerLink="bill">
+          <span class="icon empty">
+            <img src="https://img.icons8.com/emoji/48/000000/memo-emoji.png" /> 
+          </span> 
+          <span class="text empty">BILL</span>
+        </a>
+        <!-- <div class="indicator"></div> -->
+      </li>
+      <li class="list">
+        <a routerLink="user">
+          <span class="icon empty">
+            <img src="https://img.icons8.com/color/64/000000/user.png" />
+          </span> <span class="text empty">CUSTOMER</span>
+        </a>
+        <!-- <div class="indicator"></div> -->
+      </li>
+    </ul>
+  </div>
+</div>
+<router-outlet></router-outlet>
 
 <!-- <div class="container menu-style" style="height: 7rem; padding-top: 0.5rem;">
       <div class="row row-cols-md-8 ">

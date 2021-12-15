@@ -6,6 +6,7 @@ import { CallApiService } from 'src/app/services/call-api.service';
 import { MatIconModule } from '@angular/material/icon';
 import { user } from 'src/app/models/user';
 import Swal from 'sweetalert2';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-user',
@@ -16,11 +17,13 @@ export class UserComponent implements OnInit {
   formRoom: any
   formUser: any
   userAllData: any
+  userAllDataExport: user []=[]
   roomAllData: any
   getDataUserById: any
   getDataRoomById: any
   searchFilter:any
  
+  fileExcelName = "ExcelSheet.xlsx"
 
   constructor(public router: Router, public callapi: CallApiService, public fb: FormBuilder) {
 
@@ -80,6 +83,7 @@ export class UserComponent implements OnInit {
     this.callapi.getAllUser().subscribe(data => {
       this.userAllData = data;
       console.log(this.userAllData);
+
     })
   }
 
@@ -158,6 +162,17 @@ export class UserComponent implements OnInit {
       }
       
     })
+  }
+
+  getAllUserToExport():void {
+      let element= document.getElementById('export-data-to-excel');
+      const ws:XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+
+      const wb: XLSX.WorkBook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+      XLSX.writeFile(wb, this.fileExcelName);
+ 
   }
 
 }
